@@ -10,11 +10,20 @@ public class Medlemmer {
     Scanner in = new Scanner(System.in);
     private boolean aktiv;
     private boolean restance;
-    private boolean konkurrenceSvømmer;
     private final int seniorPris = 1600;
     private final int juniorPris = 1000;
     private int price = 0;
 
+    public Medlemmer(String dateOfBirth, String name, boolean aktiv, boolean restance) {
+        this.dateOfBirth = dateOfBirth;
+        this.name = name;
+        this.aktiv = aktiv;
+        this.restance = restance;
+    }
+
+    public Medlemmer(){
+
+    }
 
     public String getName() {
         return name;
@@ -56,6 +65,9 @@ public class Medlemmer {
 
     // pristjek i forhold til medlemmets status og pris heraf
     public int prisTjek() {
+        if (aktiv == true){
+
+
 
         if (getAgeInYears() >= 60) {
             price = seniorPris / 100 * 75;
@@ -63,10 +75,28 @@ public class Medlemmer {
             price = seniorPris;
         } else if (getAgeInYears() < 18) {
             price = juniorPris;
+        }
         } else if (aktiv == false) {
             price = 500;
         }
         return price;
+    }
+    public void createMember(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Indtast medlems navn");
+        setName(in.nextLine());
+
+        System.out.println("Indtast medlems fødselsdato i formatet ÅÅÅÅ-MM-DD");
+        setDateOfBirth(in.nextLine());
+
+        System.out.println("Er " + getName() + " aktiv eller ej. hvis ja så skrev ja. Hvis ikke så skriv nej ");
+
+        String s = in.nextLine();
+        if (s.equalsIgnoreCase("ja")) {
+            setAktiv(true);
+        } else {
+            setAktiv(false);
+        }
     }
 
     //Aktivitetsform i forhold til konkurrencesvømmere samt om de skal på senior eller juniorholdet
@@ -87,16 +117,12 @@ public class Medlemmer {
 
     @Override
     public String toString() {
-        return "Medlemmer{" +
+        return
                 "age='" + getAgeInYears() + '\'' +
                 ", name='" + name + '\'' +
                 ", aktiv=" + aktiv +
                 ", restance=" + restance +
-                ", konkurrenceSvømmer=" + konkurrenceSvømmer +
-                ", seniorPris=" + seniorPris +
-                ", juniorPris=" + juniorPris +
-                ", price=" + prisTjek() +
-                '}';
+                ", price=" + prisTjek();
 
     }
 }
