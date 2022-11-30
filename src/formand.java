@@ -1,25 +1,64 @@
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class formand extends Medlemmer{
-    public void indmeldelse(){
-        Scanner in = new Scanner(System.in);
-        System.out.println("Indtast medlems navn");
-        setName(in.nextLine());
+public class formand extends Medlemmer {
+    public void indmeldelse() throws IOException {
 
-        System.out.println("Indtast medlems fødselsdato i formatet ÅÅÅÅ-MM-DD");
-        setDateOfBirth(in.nextLine());
+        while (true) {
+            Scanner in = new Scanner(System.in);
+            ArrayList<KonkurrenceSvømmer> MedlemslistenforKonkurrencesvømmere = new ArrayList<>();
+            ArrayList<Medlemmer> MedlemslistenforAlmindelige = new ArrayList<>();
 
-        System.out.println("Er " + getName() + " aktiv eller ej. hvis ja så skrev ja. Hvis ikke så skriv nej ");
+            System.out.println("vil du tilføje et almindeligt medlem eller en konkurrencesvømmer. " +
+                    "Tast a for almindeliig & k for konkurrencesvømmer. " +
+                    "Hvis du vil stoppe med at tilføje så tast s " );
+            String input = in.nextLine();
+            if (input.equalsIgnoreCase("k")) {
+                KonkurrenceSvømmer ks1 = new KonkurrenceSvømmer();
+                ks1.KonkurrencesvømmerIndmelser();
+                MedlemslistenforKonkurrencesvømmere.add(ks1);
+                System.out.println(ks1);
+            } else if (input.equalsIgnoreCase("a")) {
+                Medlemmer m1 = new Medlemmer();
+                m1.createMember();
+                MedlemslistenforAlmindelige.add(m1);
+                System.out.println(m1);
+            } else if (input.equalsIgnoreCase("s")) {
+                break;
+            }
 
-        String s = in.nextLine();
-        if (s.equalsIgnoreCase("ja")){
-            setAktiv(true);
-        } else {
-            setAktiv(false);
+            PrintWriter w = new PrintWriter(new FileWriter(new File("f.txt"),true));
+
+            if (MedlemslistenforAlmindelige.isEmpty()) {
+                w.println(MedlemslistenforKonkurrencesvømmere);
+                MedlemslistenforKonkurrencesvømmere.clear();
+            } else
+                w.println(MedlemslistenforAlmindelige);
+                MedlemslistenforAlmindelige.clear();
+
+
+            w.flush();
+            w.close();
         }
 
-        //System.out.println("Indtast medlems aktivitetsform");
-
     }
-
 }
+// leg
+    /* public static void main(String[] args) throws FileNotFoundException {
+        formand f = new formand();
+        f.indmeldelse();
+        System.out.println(f);
+
+        Scanner read = new Scanner(new File("f.txt"));
+        int counter = 0;
+
+        while (read.hasNext()){
+            System.out.println(read.next());
+            counter++;
+
+        }
+        System.out.println(counter);
+
+     */
+
