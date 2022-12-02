@@ -2,14 +2,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         new Main().run();
         }
-    public void run() throws IOException {
+    public void run() throws IOException, InterruptedException {
 
-        formand f1 = new formand();
-
-        f1.indmeldelse();
+        LogIn log = new LogIn();
+        log.login();
 
 
 

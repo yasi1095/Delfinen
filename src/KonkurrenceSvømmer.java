@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class KonkurrenceSvømmer extends Medlemmer {
@@ -104,50 +105,77 @@ public class KonkurrenceSvømmer extends Medlemmer {
 
         if (getAgeInYears() >= 18) {
 
-           e= Svømmehold.SENIOR;
+            e = Svømmehold.SENIOR;
+        } else {
+            e = Svømmehold.JUNIOR;
         }
-        else {
-            e=Svømmehold.JUNIOR;
-        }
-        return  e;
+        return e;
     }
 
-    public String returnerSvømmestil(){
+    public String returnerSvømmestil() {
+        String b = "";
+        String kb = "";
+        String kc = "";
+        String krc = "";
 
-
-        String q = "";
-
-        boolean s = false;
-        if (kanButterfly == true){
-            s = true;
-            q = "kanButterfly ";
-
-        }  if (kanBryst == true) {
-            s =true;
-            q = "kanBryst ";
+        if (kanBryst == true) {
+            b = " Bedste tid for Bryst er " +bedsteTider() + " sekunder\n";
+        }
+        if (kanButterfly == true) {
+            kb =  " Bedste tid for Butterfly er " +bedsteTider() + " sekunder\n";
         }
         if (kanCrawl == true) {
-            s = true;
-            q = "kanCrawl ";
-
-
+            kc = " Bedste tid for Crawl er " +bedsteTider() + " sekunder\n";
         }
         if (kanRygCrawl == true) {
-            s= true;
-
-            q = "kanRygCrawl ";
+            krc =  " Bedste tid for Ryg Crawl er " +bedsteTider() + " sekunder\n";
 
         }
+        String samlet = b + kb + kc + krc;
 
-return q+s ;
+        return samlet.substring(1, samlet.length() - 1) ;
     }
+    public String holdForTrænere(){
+
+        Svømmehold s;
+        Træner træner = new Træner();
+        træner.setName("Hardy Akira Madsen");
+        Træner træner1 = new Træner();
+        træner1.setName("Patrick Agergaard");
+
+        String holder = "";
+
+        if (getAgeInYears() >= 18) {
+
+            holder= træner.getName();
+
+            s = Svømmehold.SENIOR;
+        } else {
+
+            holder= træner1.getName();
+            s = Svømmehold.JUNIOR;
+        }
+        return holder;
+
+    }
+
+    public double bedsteTider(){
+        Random random = new Random();
+
+        double resultat = random.nextInt(1000)+2000;
+
+        double sumResultat = resultat/100;
+
+
+        return sumResultat;
+    }
+
 
 
     @Override
     public String toString() {
         return
-                returnerSvømmestil() + " name: " +getName() + "  age: " +
-                getAgeInYears() + " hold: " + hold()
-                ;
+                 "Navn: " + getName() + "\n" + getName() + " er tilmeldt følgende svømmestile:\n" + returnerSvømmestil() + ":\n Alder: " +
+                        getAgeInYears() + " hold: " + hold() + " Træner: "+ holdForTrænere() ;
     }
 }

@@ -10,9 +10,9 @@ public class formand extends Medlemmer {
             ArrayList<KonkurrenceSvømmer> MedlemslistenforKonkurrencesvømmere = new ArrayList<>();
             ArrayList<Medlemmer> MedlemslistenforAlmindelige = new ArrayList<>();
 
-            System.out.println("vil du tilføje et almindeligt medlem eller en konkurrencesvømmer. " +
-                    "Tast a for almindeliig & k for konkurrencesvømmer. " +
-                    "Hvis du vil stoppe med at tilføje så tast s " );
+            System.out.println("Vil du tilføje et almindeligt medlem eller en konkurrencesvømmer?\n" +
+                    "Tast a for almindeliig \nTast k for konkurrencesvømmer. \n" +
+                    "Tast s hvis du vil afslutte handlingen " );
             String input = in.nextLine();
             if (input.equalsIgnoreCase("k")) {
                 KonkurrenceSvømmer ks1 = new KonkurrenceSvømmer();

@@ -89,7 +89,7 @@ public class Medlemmer {
         System.out.println("Indtast medlems fødselsdato i formatet ÅÅÅÅ-MM-DD");
         setDateOfBirth(in.nextLine());
 
-        System.out.println("Er " + getName() + " aktiv eller ej. hvis ja så skrev ja. Hvis ikke så skriv nej ");
+        System.out.println("Er " + getName() + " aktiv eller ej.\nHvis ja så tast ja.\nHvis ikke så tast nej ");
 
         String s = in.nextLine();
         if (s.equalsIgnoreCase("ja")) {
