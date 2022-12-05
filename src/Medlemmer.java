@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Medlemmer {
@@ -39,6 +40,13 @@ public class Medlemmer {
 
     public boolean isAktiv() {
         return aktiv;
+    }
+
+    public boolean isRestance(){
+        return restance;
+    }
+    public void setRestance(boolean restance){
+        this.restance = restance;
     }
 
     public int getAgeInYears() {
@@ -81,6 +89,32 @@ public class Medlemmer {
         }
         return price;
     }
+
+    public String debt() {
+
+        Random random = new Random();
+        int n = 0;
+        double restancePrice = 0;
+        String s = "";
+
+        int randomizer = random.nextInt(99+1);
+        int månedRandom = random.nextInt(3+1);
+
+        if (randomizer<90){
+            setRestance(true);
+        }
+        if (isRestance()==true&&månedRandom>0){
+
+            n = månedRandom;
+            restancePrice = prisTjek() * 1.06;
+
+            restancePrice= n*restancePrice;
+            s= ("Vedkommende har ikke betalt i "+ n + " år\n"  + "debt: "+restancePrice );
+        } else if(isRestance()!=true)  {
+            s= "Personen har ingen restance";
+        }
+        return s;
+    }
     public void createMember(){
         Scanner in = new Scanner(System.in);
         System.out.println("Indtast medlems navn");
@@ -114,6 +148,20 @@ public class Medlemmer {
         }
 //
     }
+    /*
+    public void kasserUi(){
+
+        if (isRestance()==true) {
+            System.out.println("Følgende medlemmer har restance");
+            System.out.println("name :" + name);
+            System.out.println("age :" + getAgeInYears());
+            System.out.println(debt());
+        }
+
+
+    }
+
+     */
 
     @Override
     public String toString() {
@@ -121,7 +169,7 @@ public class Medlemmer {
                 "age='" + getAgeInYears() + '\'' +
                 ", name='" + name + '\'' +
                 ", aktiv=" + aktiv +
-                ", restance=" + restance +
+               " "+ debt() +
                 ", price=" + prisTjek();
 
     }

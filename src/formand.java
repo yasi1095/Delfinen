@@ -12,36 +12,52 @@ public class formand extends Medlemmer {
 
             System.out.println("Vil du tilføje et almindeligt medlem eller en konkurrencesvømmer?\n" +
                     "Tast a for almindeliig \nTast k for konkurrencesvømmer. \n" +
-                    "Tast s hvis du vil afslutte handlingen " );
+                    "Tast s hvis du vil afslutte handlingen ");
             String input = in.nextLine();
             if (input.equalsIgnoreCase("k")) {
                 KonkurrenceSvømmer ks1 = new KonkurrenceSvømmer();
                 ks1.KonkurrencesvømmerIndmelser();
                 MedlemslistenforKonkurrencesvømmere.add(ks1);
                 System.out.println(ks1);
+                PrintWriter konkurrence = new PrintWriter(new FileWriter(new File("konkurrence.txt"), true));
+                konkurrence.println(MedlemslistenforKonkurrencesvømmere);
+                MedlemslistenforKonkurrencesvømmere.clear();
+                konkurrence.flush();
+                konkurrence.close();
             } else if (input.equalsIgnoreCase("a")) {
                 Medlemmer m1 = new Medlemmer();
                 m1.createMember();
                 MedlemslistenforAlmindelige.add(m1);
                 System.out.println(m1);
+                PrintWriter almindelig = new PrintWriter(new FileWriter(new File("almindelig.txt"), true));
+                almindelig.println(MedlemslistenforAlmindelige);
+                MedlemslistenforAlmindelige.clear();
+                almindelig.flush();
+                almindelig.close();
+
             } else if (input.equalsIgnoreCase("s")) {
                 break;
             }
 
-            PrintWriter w = new PrintWriter(new FileWriter(new File("f.txt"),true));
+          /*  PrintWriter almindelig = new PrintWriter(new FileWriter(new File("almindelig.txt"),true));
+
+            PrintWriter konkurrence = new PrintWriter(new FileWriter(new File("konkurrence.txt"),true));
 
             if (MedlemslistenforAlmindelige.isEmpty()) {
-                w.println(MedlemslistenforKonkurrencesvømmere);
+                almindelig.println(MedlemslistenforKonkurrencesvømmere);
                 MedlemslistenforKonkurrencesvømmere.clear();
             } else
-                w.println(MedlemslistenforAlmindelige);
+                almindelig.println(MedlemslistenforAlmindelige);
                 MedlemslistenforAlmindelige.clear();
 
 
-            w.flush();
-            w.close();
+            almindelig.flush();
+            almindelig.close();
         }
 
+           */
+
+        }
     }
 }
 // leg

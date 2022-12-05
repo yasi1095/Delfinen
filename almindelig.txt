@@ -1,0 +1,8 @@
+[age='22', name='ali', aktiv=true , price=1600]
+[age='22', name='shucayb', aktiv=true Personen har ingen restance, price=1600]
+[age='21', name='Hasan', aktiv=true Personen har ingen restance, price=1600]
+[age='21', name='Wei', aktiv=true Vedkommende har ikke betalt i 3 år
+debt: 5088.0, price=1600]
+[age='24', name='Isaac', aktiv=true Vedkommende har ikke betalt i 1 år
+debt: 1696.0, price=1600]
+[age='21', name='Ikhra', aktiv=true , price=1600]

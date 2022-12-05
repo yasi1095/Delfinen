@@ -74,3 +74,5 @@ yasin er tilmeldt følgende svømmestile:
 Bedste tid for Bryst er 22.68 sekunder
  Bedste tid for Crawl er 29.21 sekunder:
  Alder: 22 hold: SENIOR Træner: Hardy Akira Madsen]
+[age='22', name='aaaa', aktiv=trueVedkommende har ikke betalt i 3 år
+debt: 5088.0, price=1600]
